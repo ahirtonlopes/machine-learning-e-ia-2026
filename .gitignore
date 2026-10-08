@@ -1,0 +1,17 @@
+# Sistema
+.DS_Store
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Artefatos gerados ao rodar os notebooks
+*.keras
+*.h5
+model.png
+
+# Segredos (nunca versionar chaves de API)
+.env
