@@ -212,7 +212,7 @@ Este exemplo usa a **mesma API key gratuita** do exemplo 10: siga os passos 1 a 
 Aqui chegamos à "IA que age": um **LLM (Gemini)** que, além de responder, **decide usar ferramentas** (busca no Google, uma API de clima em tempo real) e **lembra da conversa**.
 
 **O que você vai ver:**
-- Um agente que monta passeios de um dia em São Paulo, criado do zero com o [Google ADK](https://google.github.io/adk-docs/).
+- Um agente que monta passeios de um dia em São Paulo, criado do zero com o [Google ADK](https://adk.dev/).
 - Uma **ferramenta customizada** que consulta o clima em tempo real (API Open-Meteo) em pontos de **São Paulo** (Parque Ibirapuera, MASP, Mercadão, Pinacoteca, Theatro Municipal) antes de sugerir o roteiro.
 - Um **time de agentes**, em que um agente principal delega tarefas para especialistas.
 - **Sessions**: a diferença entre um agente com memória e um agente que esquece tudo a cada pergunta.
@@ -286,7 +286,7 @@ E fontes oficiais gratuitas para estudar no seu ritmo:
 - [Google Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course): curso introdutório de ML do Google, com exercícios interativos.
 - [Kaggle Learn](https://www.kaggle.com/learn): microcursos práticos de Python, pandas, ML e deep learning, todos rodando no navegador.
 - [Curso de LLMs do Hugging Face (em português)](https://huggingface.co/learn/llm-course/pt/chapter1/1): Transformers e modelos de linguagem na prática.
-- [Documentação do Google ADK](https://google.github.io/adk-docs/): para construir seus próprios agentes.
+- [Documentação do Google ADK](https://adk.dev/): para construir seus próprios agentes.
 
 ---
 
