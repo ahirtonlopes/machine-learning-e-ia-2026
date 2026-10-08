@@ -2,7 +2,7 @@
 
 Material de apoio da palestra **"Machine Learning e IA: Da máquina que aprende à IA que age"**, apresentada em **08/10/2026** para alunos de graduação. 🎉
 
-Se você chegou aqui pelo QR code do último slide: seja bem-vindo(a)! Este repositório reúne **10 exemplos práticos**, um para cada ideia da palestra, do modelo que separa links maliciosos de links seguros até um agente de IA que planeja passeios. Tudo roda no **Google Colab**, direto no navegador e de graça: você **não precisa instalar nada** no seu computador, e não precisa já saber programar para acompanhar. Se você nunca rodou um notebook na vida, comece pela seção [🚀 Comece por aqui](#-comece-por-aqui-passo-a-passo).
+Se você chegou aqui pelo QR code do último slide: seja bem-vindo(a)! Este repositório reúne **11 exemplos práticos**, um para cada ideia da palestra, do modelo que separa links maliciosos de links seguros até um agente de IA que planeja passeios. Tudo roda no **Google Colab**, direto no navegador e de graça: você **não precisa instalar nada** no seu computador, e não precisa já saber programar para acompanhar. Se você nunca rodou um notebook na vida, comece pela seção [🚀 Comece por aqui](#-comece-por-aqui-passo-a-passo).
 
 **Professor:** [Prof. Dr. Ahirton Lopes](https://github.com/ahirtonlopes) · [LinkedIn](https://www.linkedin.com/in/ahirtonlopes)
 
@@ -18,7 +18,7 @@ Se você chegou aqui pelo QR code do último slide: seja bem-vindo(a)! Este repo
 │   ├── url_data.csv          # URLs rotuladas como maliciosas (bad) ou benignas (good)
 │   ├── payment_fraud.csv     # Transações de pagamento rotuladas como fraude ou não
 │   └── Mall_Customers.csv    # Clientes de um shopping (idade, renda, nota de gastos)
-└── Notebooks/                # Os 10 exemplos, na ordem da palestra
+└── Notebooks/                # Os 11 exemplos
     ├── 01_Ciberseguranca_Links_Maliciosos.ipynb
     ├── 02_Financas_Deteccao_de_Fraude.ipynb
     ├── 03_Varejo_Segmentacao_de_Clientes.ipynb
@@ -29,6 +29,7 @@ Se você chegou aqui pelo QR code do último slide: seja bem-vindo(a)! Este repo
     ├── 08_LLMs_Atencao_e_Transformers.ipynb
     ├── 09_Mobilidade_Q_Learning_Taxi.ipynb
     ├── 10_Turismo_Primeiro_Agente_ADK.ipynb
+    ├── 11_RH_Assistente_com_RAG.ipynb
     └── assets/               # GIFs usados no exemplo 09
 ```
 
@@ -50,8 +51,9 @@ Os notebooks baixam sozinhos o que precisam (os CSVs vêm deste repositório; as
 | 08 | Atenção e Transformers | Base dos LLMs | Deep Learning: atenção Q/K/V, Transformer, modelos pré-treinados | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ahirtonlopes/machine-learning-e-ia-2026/blob/main/Notebooks/08_LLMs_Atencao_e_Transformers.ipynb) | ~15 s + download dos modelos (~2 GB) |
 | 09 | Táxi que aprende rotas | Mobilidade | Aprendizado por reforço (Q-Learning) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ahirtonlopes/machine-learning-e-ia-2026/blob/main/Notebooks/09_Mobilidade_Q_Learning_Taxi.ipynb) | ~45 s |
 | 10 | Primeiro agente de IA | Turismo | Agentes de IA (Google ADK + Gemini) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ahirtonlopes/machine-learning-e-ia-2026/blob/main/Notebooks/10_Turismo_Primeiro_Agente_ADK.ipynb) | ~5 min (depende da API) |
+| 11 | Assistente de RH com RAG | Recursos Humanos | LLM + busca: RAG (TF-IDF x embeddings + Gemini) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ahirtonlopes/machine-learning-e-ia-2026/blob/main/Notebooks/11_RH_Assistente_com_RAG.ipynb) | ~1 min (depende da API) |
 
-\* Tempo medido executando o notebook inteiro, de uma vez, em um notebook pessoal (CPU, sem GPU), sem contar instalação de bibliotecas nem downloads. No Colab os números variam um pouco: a primeira execução também inclui o download das bases e dos modelos, e os exemplos 06 a 08 podem levar alguns minutos na CPU do Colab, ficando bem mais rápidos com GPU. O tempo do exemplo 10 é uma estimativa, porque ele depende das respostas da API do Gemini.
+\* Tempo medido executando o notebook inteiro, de uma vez, em um notebook pessoal (CPU, sem GPU), sem contar instalação de bibliotecas nem downloads. No Colab os números variam um pouco: a primeira execução também inclui o download das bases e dos modelos, e os exemplos 06 a 08 podem levar alguns minutos na CPU do Colab, ficando bem mais rápidos com GPU. Os tempos dos exemplos 10 e 11 são estimativas, porque dependem das respostas da API do Gemini.
 
 ---
 
@@ -169,6 +171,24 @@ Aqui a máquina passa a aprender com **redes neurais**: em vez de nós escolherm
 **Resultado esperado:** o modelo de sentimento dá 5 estrelas para "Esse produto é incrível!", 1 estrela para "Péssima experiência" e 3 estrelas para a frase neutra; o NER encontra **Microsoft** (organização), **Satya Nadella** (pessoa) e **Seattle** (local) com mais de 97% de confiança; e o modelo de perguntas e respostas acerta "2017" e "Vaswani et al." direto do texto.
 
 > ⏳ Este notebook baixa cerca de 2 GB de modelos do Hugging Face na primeira execução. No Colab isso leva poucos minutos; tenha paciência na seção 9.
+
+---
+
+## 🔎 LLMs na prática: RAG (exemplo 11)
+
+### 11 - RH: um assistente que responde pelo manual da empresa
+
+Na palestra, o RAG aparece logo depois de "Como funcionam os LLMs?": é o jeito mais comum de fazer um LLM responder sobre **dados que ele nunca viu no treino**, como o manual interno de uma empresa, sem re-treinar o modelo e com menos risco de ele inventar.
+
+**O que você vai ver:**
+- O manual do colaborador da **Garoa Tecnologia**, empresa **fictícia** de São Paulo, dividido em 12 trechos (home office, vale-refeição, férias, licenças, uso de IA generativa...).
+- **Partes 1 e 2, sem API key:** uma busca clássica por palavras (TF-IDF, a mesma ideia do exemplo 01) e onde ela falha: perguntas do dia a dia, com sinônimos, como "Meu Uber é reembolsado?" (o manual fala em "corridas de aplicativo") ou "Vou ser pai, quantos dias posso ficar em casa?".
+- **Partes 3 a 5, com API key:** a busca por **significado** com embeddings do Gemini, a montagem do prompt com os trechos encontrados e a resposta final citando a seção do manual.
+- O teste mais importante: uma pergunta que o manual **não** responde, para ver o assistente dizer "não encontrei" em vez de inventar, e a comparação com o mesmo modelo **sem RAG**.
+
+**Resultado esperado:** na parte sem API, a busca por palavras acerta o trecho do vale-refeição, mas erra as perguntas sobre Uber (traz "Day off de aniversário") e sobre licença-paternidade (traz "Equipamentos"). Com embeddings, a busca deve chegar aos trechos certos, e o assistente responde citando a seção entre colchetes, por exemplo `[Transporte e mobilidade]`. As respostas exatas do Gemini variam a cada execução.
+
+Este exemplo usa a **mesma API key gratuita** do exemplo 10: siga os passos 1 a 3 da seção de agentes abaixo para gerar a chave e guardá-la nos Secrets do Colab.
 
 ---
 
